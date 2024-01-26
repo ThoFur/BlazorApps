@@ -1,0 +1,26 @@
+﻿@page "/tables"
+<TableTemplate Items="artikels">
+    <TableHeader>
+        <th>Id</th>
+        <th>Naam</th>
+        <th>Prijs</th>
+        <th>Omschrijving</th>
+    </TableHeader>
+    <RowTemplate>
+        <td>@context.Id</td> <td>@context.Naam</td> <td>@context.Prijs</td>
+        <td>@context.Omschrijving</td>
+    </RowTemplate>
+    <TableFooter>
+        <p class="voet">&copy; Thomas - 2024</p>
+    </TableFooter>
+</TableTemplate>
+
+<CopyrightFooter Auteur="Thomas">"oké, twee copyrights is misschien teveel, maar een 'tablefooter' is geen 'CopyrightFooter'." &#x1F602;</CopyrightFooter>
+
+@code {
+    public IEnumerable<Artikel> artikels { get; set; } = new List<Artikel>() {
+new Artikel {Id = 1, Naam = "Zaag", Prijs = 11.50m, Omschrijving = "Handzaag 50cm" },
+new Artikel { Id = 2, Naam = "Hamer", Prijs = 74.99m, Omschrijving = "Voorhamer 10kg" },
+new Artikel { Id = 3, Naam = "Beitel", Prijs = 15.75m, Omschrijving = "Steenbeitel 30cm" }
+};
+}

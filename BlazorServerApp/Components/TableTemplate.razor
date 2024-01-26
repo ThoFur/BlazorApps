@@ -1,0 +1,26 @@
+﻿@typeparam TItem
+<table class="table table-responsive mb-4">
+    <thead>
+        <tr>@TableHeader</tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Items)
+        {
+            <tr id="rij">@RowTemplate(item)</tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>@TableFooter</tr>
+    </tfoot>
+</table> 
+
+@code {
+        [Parameter]
+        public RenderFragment? TableHeader { get; set; }
+        [Parameter]
+        public RenderFragment<TItem>? RowTemplate { get; set; }
+        [Parameter]
+        public RenderFragment? TableFooter { get; set; }
+        [Parameter]
+        public IEnumerable<TItem>? Items { get; set; }
+}

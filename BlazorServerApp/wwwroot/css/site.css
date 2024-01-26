@@ -78,4 +78,27 @@ a, .btn-link {
 .blogpostFooter {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 30px;
+    
 }
+
+th, td, tr {
+    border: 2px solid black;
+    
+}
+
+#rij{
+    border-bottom: 2px solid black;
+    
+}
+.voet {
+    margin-top: 20px;
+    font-family: 'Comic Sans MS';
+    
+}
+
+.voeter {
+    background: linear-gradient(to right, #800080, #4B0082);
+    /*background: linear-gradient(to right, #700070, #000066);*/
+
+    color: white;
+}80
