@@ -1,0 +1,17 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<ErrorBoundary>
+    <ChildContent>
+        <Dobbelen/>
+    </ChildContent>
+    <ErrorContent>
+        <p class="alert alert-danger">Dobbelen component out of order...</p>
+    </ErrorContent>
+</ErrorBoundary>

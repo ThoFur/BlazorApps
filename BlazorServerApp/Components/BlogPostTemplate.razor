@@ -1,0 +1,15 @@
+﻿<h2 style="font-style:italic;">@Kop</h2>
+<hr />
+<div class="blogpost">
+    @Inhoud
+</div>
+<hr /> 
+<p class="blogpostFooter">@Footer</p>
+@code {
+    [Parameter]
+    public RenderFragment? Kop { get; set; }
+    [Parameter]
+    public RenderFragment? Inhoud { get; set; }
+    [Parameter]
+    public RenderFragment? Footer { get; set; }
+}

@@ -1,0 +1,35 @@
+﻿@page "/eenentwintig"
+
+<h1>Eenentwintig</h1>
+<button class="btn btn-primary m-3" @onclick="TrekKaart">Trek een kaart</button>
+<div class="mb-3">
+    @foreach( var kaart in kaarten)
+    {
+        var pad = $"/images/{kaart}.png";
+        <img src=@pad width="48"/>
+    }
+</div>
+<p class="alert alert-info">Jouw score : @currentScore</p>
+<CopyrightFooter Auteur="Thomas">
+    <h4>Blazor Rocks!</h4>
+</CopyrightFooter>
+
+@code{
+    private int currentScore = 0;
+    private List<string> kaarten = new List<string>();
+    private static readonly string [] Soorten = { "H", "D", "C", "S"};
+    private static readonly string [] Beelden = { "7", "8", "9", "10", "J", "Q", "K", "A" };
+    private static readonly byte [] Waarden = {7, 8, 9, 10, 1, 2, 3, 11};
+    private string GetRandomCard(){
+        Random random = new Random();
+        var soort = Soorten[random.Next(0, 4)];
+        var kaart = random.Next(0, 8);
+        var beeld = Beelden[kaart];
+        var waarde = Waarden[kaart];
+        currentScore += waarde;
+        return $"{beeld}{soort}";
+    }
+    private void TrekKaart(){
+        kaarten.Add(GetRandomCard());
+    }
+}
