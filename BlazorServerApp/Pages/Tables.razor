@@ -12,9 +12,7 @@
         <td>@artikel.Prijs</td>
         <td>@artikel.Omschrijving</td>
     </RowTemplate>
-    <TableFooter>
-        <p class="voet">&copy; Thomas - 2024</p>
-    </TableFooter>
+    
 </TableTemplate>
 
 <TableTemplate Items="personen" TItem="Persoon" Context="Persoon">
@@ -28,6 +26,9 @@
         <td>@Persoon.Voornaam</td>
         <td>@Persoon.Familienaam</td>
     </RowTemplate>
+    <TableFooter>
+        <p class="voet">&copy; Thomas - 2024</p>
+    </TableFooter>
     
 </TableTemplate>
 
@@ -39,7 +40,7 @@
         <td Id="geenRand"><img src="./images/@(boek.Afbeelding).jpg" width="140" /></td>
         <tr Id="geenRand"><h3>@boek.Auteur</h3></tr>
         <tr Id="geenRand"><h2>@boek.Titel</h2></tr>
-        <tr Id="geenRand"><p>@boek.Taal | @boek.Afwerking | @boek.ISBN | @boek.UitgifteDatum.ToShortDateString() | @boek.AantalPaginas</p></tr>
+        <tr Id="geenRand"><p>@boek.Taal | @boek.Afwerking | @boek.ISBN | @boek.UitgifteDatum.ToString("MMMM yyyy") | @boek.AantalPaginas pagina's</p></tr>
         <tr Id="geenRand"><p>@boek.Beschrijving</p></tr>
     </RowTemplate>
 </TableTemplate>
