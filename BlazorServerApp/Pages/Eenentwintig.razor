@@ -10,9 +10,10 @@
     }
 </div>
 <p class="alert alert-info">Jouw score : @currentScore</p>
-<CopyrightFooter Auteur="Thomas">
-    <h4>"21..., das van mij"</h4>
+<CopyrightFooter @attributes = "@footerAttributes">
+    
 </CopyrightFooter>
+<button class="btn btn-primary m-3" @onclick="Verander"> Verander auteur </button>
 
 @code{
     private int currentScore = 0;
@@ -32,4 +33,23 @@
     private void TrekKaart(){
         kaarten.Add(GetRandomCard());
     }
+
+    private void Verander() => footerAttributes["auteur"] = "Juulke";
+
+    private Dictionary<string, object> footerAttributes = 
+        new Dictionary<string, object>()
+        {
+            {
+                "auteur", "Thomas"
+            },
+            {
+                "cursus", "Blazor"
+            },
+            {
+                "jaartal", 2024
+            },
+            {
+                "doelgroep", ".NET ontwikkeling met C#"
+            },
+        };
 }

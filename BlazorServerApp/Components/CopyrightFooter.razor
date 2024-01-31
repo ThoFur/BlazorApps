@@ -1,5 +1,6 @@
 ﻿<div class="alert alert-info voeter">
-    <div>&copy; @Auteur &#x1F913;</div>
+    <div>@Doelgroep - @Cursus</div>
+    <div>&copy; @Auteur &#x1F913; (@Jaartal)</div>
     <div>@ChildContent</div>
 </div>
 
@@ -8,6 +9,13 @@
     public string? Auteur { get; set; }
 
     [Parameter]
+    public string? Cursus { get; set; }
+    [Parameter]
+    public int Jaartal { get; set; }
+    [Parameter]
+    public string? Doelgroep { get; set; }
+    [Parameter]
     public RenderFragment? ChildContent { get; set; }
+   
 }
 
