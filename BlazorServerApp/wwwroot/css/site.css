@@ -83,7 +83,6 @@ a, .btn-link {
 
 th, td, tr {
     border: 2px solid black;
-    
 }
 
 #rij{
@@ -94,6 +93,7 @@ th, td, tr {
     margin-top: 20px;
     font-family: 'Comic Sans MS';
     
+    
 }
 
 .voeter {
@@ -101,4 +101,8 @@ th, td, tr {
     /*background: linear-gradient(to right, #700070, #000066);*/
 
     color: white;
-}80
+}
+
+#geenRand{
+    border:none;
+}

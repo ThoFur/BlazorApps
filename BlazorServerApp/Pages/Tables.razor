@@ -1,5 +1,5 @@
 ﻿@page "/tables"
-<TableTemplate Items="artikels">
+<TableTemplate Items="artikels" TItem="Artikel" Context="artikel">
     <TableHeader>
         <th>Id</th>
         <th>Naam</th>
@@ -7,15 +7,44 @@
         <th>Omschrijving</th>
     </TableHeader>
     <RowTemplate>
-        <td>@context.Id</td> <td>@context.Naam</td> <td>@context.Prijs</td>
-        <td>@context.Omschrijving</td>
+        <td>@artikel.Id</td>
+        <td>@artikel.Naam</td>
+        <td>@artikel.Prijs</td>
+        <td>@artikel.Omschrijving</td>
     </RowTemplate>
     <TableFooter>
         <p class="voet">&copy; Thomas - 2024</p>
     </TableFooter>
 </TableTemplate>
 
-<CopyrightFooter Auteur="Thomas">"oké, twee copyrights is misschien teveel, maar een 'tablefooter' is geen 'CopyrightFooter'." &#x1F602;</CopyrightFooter>
+<TableTemplate Items="personen" TItem="Persoon" Context="Persoon">
+    <TableHeader>
+        <th>Id</th>
+        <th>Voornaam</th>
+        <th>Familienaam</th>
+    </TableHeader>
+    <RowTemplate>
+        <td>@Persoon.Id</td>
+        <td>@Persoon.Voornaam</td>
+        <td>@Persoon.Familienaam</td>
+    </RowTemplate>
+    
+</TableTemplate>
+
+<TableTemplate Items="boeken" TItem="Boek" Context="boek">
+    <TableHeader>
+        <h2>Boekenlijst</h2>
+    </TableHeader>
+    <RowTemplate>
+        <td Id="geenRand"><img src="./images/@(boek.Afbeelding).jpg" width="140" /></td>
+        <tr Id="geenRand"><h3>@boek.Auteur</h3></tr>
+        <tr Id="geenRand"><h2>@boek.Titel</h2></tr>
+        <tr Id="geenRand"><p>@boek.Taal | @boek.Afwerking | @boek.ISBN | @boek.UitgifteDatum.ToShortDateString() | @boek.AantalPaginas</p></tr>
+        <tr Id="geenRand"><p>@boek.Beschrijving</p></tr>
+    </RowTemplate>
+</TableTemplate>
+
+<CopyrightFooter Auteur="Thomas"></CopyrightFooter>
 
 @code {
     public IEnumerable<Artikel> artikels { get; set; } = new List<Artikel>() {
@@ -23,4 +52,18 @@ new Artikel {Id = 1, Naam = "Zaag", Prijs = 11.50m, Omschrijving = "Handzaag 50c
 new Artikel { Id = 2, Naam = "Hamer", Prijs = 74.99m, Omschrijving = "Voorhamer 10kg" },
 new Artikel { Id = 3, Naam = "Beitel", Prijs = 15.75m, Omschrijving = "Steenbeitel 30cm" }
 };
+
+    public IEnumerable<Persoon> personen { get; set; } = new List<Persoon>()
+    {
+        new Persoon { Id = 1, Voornaam = "Steven", Familienaam = "Lucas" },
+        new Persoon { Id = 2, Voornaam = "John", Familienaam = "Fitzgerald" },
+        new Persoon { Id = 3, Voornaam = "Rita", Familienaam = "Jones" }
+    };
+
+    public IEnumerable<Boek> boeken { get; set; } = new List<Boek>()
+    {
+        new Boek { Auteur = "J.K. Rowling", Titel = "Harry Potter en de steen der wijzen", Afbeelding = "SteenDerWijzen", Taal = "Nederlands", Afwerking = "Paperback", ISBN = 9789061699767, UitgifteDatum = new DateTime(2022, 1, 1), AantalPaginas = 301, Beschrijving = "Harry Potter is een doodgewone, maar ongelukkige jongen die sinds de dood van zijn ouders bij zijn saaie en hardvochtige oom en tante woont, in de bezemkast onder de trap" },
+        new Boek { Auteur = "Fjodor Dostojevski", Titel = "Schuld en boete", Afbeelding = "SchuldEnBoete", Taal = "Nederlands", Afwerking = "Paperback", ISBN = 9789031505128, UitgifteDatum = new DateTime(2008, 9, 1), AantalPaginas = 286, Beschrijving = "Het is de geschiedenis van de geestelijk en sociaal onderkomen student Raskoljnikow, die door een 'Napoleontische' daad zijn gevoel van eigenwaarde en onafhankelijkheid tracht te handhaven en een moordenaar wordt. Later komt hij door zijn liefde voor het gevallen meisje Sonja, die verheffend op hem werkt, tot vrijwillige schuldbetekenis." },
+        new Boek { Auteur = "Hugo Claus", Titel = "Het verdriet van België", Afbeelding = "VerdrietVanBelgie", Taal = "Nederlands", Afwerking = "Paperback", ISBN = 9789403108100, UitgifteDatum = new DateTime(2018, 2, 1), AantalPaginas = 720, Beschrijving = "Het verdriet van België omspant de periode 1939-1947: vrede, oorlog en vrede. Louis Seynaeve is elf jaar en leerling op een nonneninternaat. Verwarring, hunkering en bedrog vormen zijn jongensjaren in de schoot van een kleurrijke en verbazingwekkende familie." },
+    };
 }
