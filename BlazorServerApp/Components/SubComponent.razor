@@ -1,0 +1,11 @@
+﻿<div class="ms-4 mt-4" style="background-color:lightblue;padding:30px;">
+    <h3>Subcomponent</h3>
+    <p>Doorgegeven waarde : @SubGetal</p>
+    <SubSubComponent SubSubGetal="@SubGetal"/>
+</div>
+
+@code {
+    [Parameter]
+    public int SubGetal { get; set; }
+
+}

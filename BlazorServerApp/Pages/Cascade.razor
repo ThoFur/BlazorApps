@@ -1,0 +1,13 @@
+﻿@page "/cascade"
+<h1>Cascade</h1>
+<p>Waarde getal in cascade.razor: @Getal</p>
+<button class="btn btn-primary mb-2" @onclick="Verhoog">Verhoog de waarde van het getal met 1</button>
+
+<SubComponent SubGetal="@Getal"/>
+
+@code{
+    private int Getal = 10;
+    private void Verhoog(){
+        Getal++;
+    }
+}

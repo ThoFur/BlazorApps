@@ -1,4 +1,5 @@
 ﻿@page "/eenentwintig"
+@inherits EenentwintigBase
 
 <h1>Eenentwintig</h1>
 <button class="btn btn-primary m-3" @onclick="TrekKaart">Trek een kaart</button>
@@ -10,46 +11,12 @@
     }
 </div>
 <p class="alert alert-info">Jouw score : @currentScore</p>
-<CopyrightFooter @attributes = "@footerAttributes">
+<CopyrightFooter @attributes = "@footerAttributes" @ref="cfdynamic">
     
 </CopyrightFooter>
 <button class="btn btn-primary m-3" @onclick="Verander"> Verander auteur </button>
 
-@code{
-    private int currentScore = 0;
-    private List<string> kaarten = new List<string>();
-    private static readonly string [] Soorten = { "H", "D", "C", "S"};
-    private static readonly string [] Beelden = { "7", "8", "9", "10", "J", "Q", "K", "A" };
-    private static readonly byte [] Waarden = {7, 8, 9, 10, 1, 2, 3, 11};
-    private string GetRandomCard(){
-        Random random = new Random();
-        var soort = Soorten[random.Next(0, 4)];
-        var kaart = random.Next(0, 8);
-        var beeld = Beelden[kaart];
-        var waarde = Waarden[kaart];
-        currentScore += waarde;
-        return $"{beeld}{soort}";
-    }
-    private void TrekKaart(){
-        kaarten.Add(GetRandomCard());
-    }
+<button class="btn btn-primary m-3" @onclick="InfoOphalen">Info</button>
+<div>@cursus</div>
+<div>@info</div>
 
-    private void Verander() => footerAttributes["auteur"] = "Juulke";
-
-    private Dictionary<string, object> footerAttributes = 
-        new Dictionary<string, object>()
-        {
-            {
-                "auteur", "Thomas"
-            },
-            {
-                "cursus", "Blazor"
-            },
-            {
-                "jaartal", 2024
-            },
-            {
-                "doelgroep", ".NET ontwikkeling met C#"
-            },
-        };
-}
