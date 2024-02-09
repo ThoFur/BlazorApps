@@ -1,0 +1,18 @@
+﻿<div style="background-color:aliceblue;padding:20px;margin:20px;">
+<h3>Child</h3>
+<p>Getal : @GetalInChild</p>
+<button class="btn btn-primary" @onclick="VerhoogGetalInChild"> Verhoog met 1 </button>
+</div>
+
+@code {
+
+    [Parameter]
+    public int GetalInChild { get; set; }
+    private async Task VerhoogGetalInChild()
+    {
+        GetalInChild++;
+        await GetalInChildChanged.InvokeAsync(GetalInChild);
+    }   
+    [Parameter]
+    public EventCallback<int> GetalInChildChanged{ get; set; }
+}

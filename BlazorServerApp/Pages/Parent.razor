@@ -1,0 +1,13 @@
+﻿@page "/parent"
+<h1>Parent</h1>
+<p>Getal : @getal</p>
+<button class="btn btn-primary" @onclick = "Verhoog">Verhoog met 5</button>
+<Child @bind-GetalInChild="getal"/>
+
+@code {
+    private int getal;
+    private void Verhoog()
+    {
+        getal += 5;
+    }
+}
