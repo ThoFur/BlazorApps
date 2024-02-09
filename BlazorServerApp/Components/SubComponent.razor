@@ -1,12 +1,15 @@
 ﻿<div class="ms-4 mt-4" style="background-color:lightblue;padding:30px;">
     <h3>Subcomponent</h3>
    <CascadingValue Name="GetalVanSubComponent" Value="13">
-       <SubSubComponent/>
+       <CascadingValue Value="@woord">
+            <SubSubComponent />
+       </CascadingValue>
    </CascadingValue>
 </div>
 
 @code {
     @*[CascadingParameter(Name = "HetGetal")]
     public int SubGetal { get; set; }*@
+    private string woord = "Dichterbij";
 
 }

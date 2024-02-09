@@ -3,7 +3,11 @@
 <p>Waarde getal in cascade.razor: @Getal</p>
 <button class="btn btn-primary mb-2" @onclick="Verhoog">Verhoog de waarde van het getal met 1</button>
 
-
+<CascadingValue Name="HetGetal" Value="@Getal">
+    <CascadingValue Name="HetWoord" Value="@Woord">
+        <SubComponent />
+    </CascadingValue>
+</CascadingValue>
 
 <CascadingValue Name="Gegevens" Value="@Gegevens">
     <SubComponent/>
