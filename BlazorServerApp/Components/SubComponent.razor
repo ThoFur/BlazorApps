@@ -1,7 +1,8 @@
 ﻿<div class="ms-4 mt-4" style="background-color:lightblue;padding:30px;">
     <h3>Subcomponent</h3>
-    @*<p>Doorgegeven waarde : @SubGetal</p>*@
-    <SubSubComponent/>
+   <CascadingValue Name="GetalVanSubComponent" Value="13">
+       <SubSubComponent/>
+   </CascadingValue>
 </div>
 
 @code {
