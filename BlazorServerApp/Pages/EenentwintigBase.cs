@@ -6,7 +6,6 @@ namespace BlazorServerApp.Pages
     public class EenentwintigBase : ComponentBase
     {
 
-
         protected string? cursus;
         protected string? info;
         protected CopyrightFooter? cfdynamic;
@@ -15,6 +14,7 @@ namespace BlazorServerApp.Pages
         protected static readonly string[] Soorten = { "H", "D", "C", "S" };
         protected static readonly string[] Beelden = { "7", "8", "9", "10", "J", "Q", "K", "A" };
         protected static readonly byte[] Waarden = { 7, 8, 9, 10, 1, 2, 3, 11 };
+        protected string boodschap = "";
         protected string GetRandomCard()
         {
             Random random = new Random();
@@ -22,12 +22,28 @@ namespace BlazorServerApp.Pages
             var kaart = random.Next(0, 8);
             var beeld = Beelden[kaart];
             var waarde = Waarden[kaart];
+            
             currentScore += waarde;
+            
             return $"{beeld}{soort}";
         }
         protected void TrekKaart()
         {
+            boodschap = "";
             kaarten.Add(GetRandomCard());
+            if (currentScore > 21)
+            {
+                boodschap =  $"The house wins! Your score: {currentScore}";
+                kaarten.Clear();
+                currentScore = 0;
+            }
+            if (currentScore == 21)
+            {
+                boodschap =  $"You win! Your score: {currentScore}";
+                kaarten.Clear();
+                currentScore = 0;
+            }
+            
         }
 
         protected void Verander() => footerAttributes["auteur"] = "Juulke";
