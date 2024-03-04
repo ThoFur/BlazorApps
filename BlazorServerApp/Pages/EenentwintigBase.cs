@@ -46,7 +46,7 @@ namespace BlazorServerApp.Pages
             
         }
 
-        protected void Verander() => footerAttributes["auteur"] = "Juulke";
+        protected void Verander() => footerAttributes["auteur"] = "Niets van, Auteur = Thomas!";
 
         protected Dictionary<string, object> footerAttributes =
             new Dictionary<string, object>()
