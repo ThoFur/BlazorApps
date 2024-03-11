@@ -106,3 +106,10 @@ th, td, tr {
 #geenRand{
     border:none;
 }
+.counter-box {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+}

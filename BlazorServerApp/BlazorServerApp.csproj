@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="blazor-dom-confetti" Version="0.0.0.5" />
+  </ItemGroup>
+
 </Project>

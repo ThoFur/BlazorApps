@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Components;
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="images/Count To 20.png" alt="Card image cap">
+    <div class="card-body" style="background-color:mediumpurple">
+
+        <h1 class="card-text" style="text-align:center; color:peachpuff; ">@currentCount</h1>
+
+    </div>
+</div>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCounter()
+    {
+        currentCount++;
+    }
+}
+
+@*Verder afwerken van het CounterBoxComponent of change it into CardComponent as used in Counter*@
