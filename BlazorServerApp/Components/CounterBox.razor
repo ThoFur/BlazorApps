@@ -1,21 +1,51 @@
 ﻿@using Microsoft.AspNetCore.Components;
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="images/Count To 20.png" alt="Card image cap">
-    <div class="card-body" style="background-color:mediumpurple">
+@if(currentCount < 20)
+{
+    <div class="card" style="width: 37rem;">
+        <img class="card-img-top" src="images/Count To 20.png" alt="Card image cap">
+        <div class="card-body" style="background-color:mediumpurple">
 
-        <h1 class="card-text" style="text-align:center; color:peachpuff; ">@currentCount</h1>
+            <h1 class="card-text" style="text-align:center; color:peachpuff; ">@Text</h1>
+
+        </div>
+        <button class="btn btn-primary" @onclick="IncrementCount">Count</button>
 
     </div>
-</div>
+}
+else
+{
+    <div>
+        <div class="alert alert-info voeter" style="width:37vw;">
+        <h3 style="text-align:center;">@Titel</h3>
+        </div>
+        <img src="@ImagePath" width="600vw;" alt="hideAndSeek" />
+    </div> 
+    <button class="btn btn-primary" style="margin-left:13rem;" @onclick="IncrementCount">Reset</button>
+    <br />
+    <br />
+}
+
 
 @code {
     private int currentCount = 0;
 
-    private void IncrementCounter()
+    public string? Text { get; set; } = "0";
+    [Parameter]
+    public string? Titel { get; set; }
+    [Parameter]
+    public string? ImagePath { get; set; }
+
+    private void IncrementCount()
     {
-        currentCount++;
+        if (currentCount < 20)
+        {
+            currentCount++;
+        }
+        else
+        {
+            currentCount = 0;
+        }
+        Text = currentCount.ToString();
     }
 }
-
-@*Verder afwerken van het CounterBoxComponent of change it into CardComponent as used in Counter*@

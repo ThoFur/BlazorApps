@@ -15,6 +15,7 @@ namespace BlazorServerApp.Pages
         protected static readonly string[] Beelden = { "7", "8", "9", "10", "J", "Q", "K", "A" };
         protected static readonly byte[] Waarden = { 7, 8, 9, 10, 1, 2, 3, 11 };
         protected string boodschap = "";
+        protected string Klas = "";
         protected string GetRandomCard()
         {
             Random random = new Random();
@@ -34,14 +35,17 @@ namespace BlazorServerApp.Pages
             if (currentScore > 21)
             {
                 boodschap =  $"The house wins! Your score: {currentScore}";
+                Klas = "alert alert-danger";
                 kaarten.Clear();
                 currentScore = 0;
             }
             if (currentScore == 21)
             {
                 boodschap =  $"You win! Your score: {currentScore}";
+                Klas = "alert alert-success";
                 kaarten.Clear();
                 currentScore = 0;
+                Console.WriteLine(Klas);
             }
             
         }
@@ -55,14 +59,8 @@ namespace BlazorServerApp.Pages
                 "auteur", "Thomas"
             },
             {
-                "cursus", "Blazor"
-            },
-            {
                 "jaartal", 2024
-            },
-            {
-                "doelgroep", ".NET ontwikkeling met C#"
-            },
+            }
             };
 
         protected void InfoOphalen()
