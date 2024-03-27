@@ -113,3 +113,27 @@ th, td, tr {
     width: 150px;
     text-align: center;
 }
+
+
+li{
+    list-style: none;
+    border:solid 1px black;
+    border-radius:7px;
+    margin-bottom:4px;
+}
+
+button{
+    border-radius:22px;
+}
+.urgent {
+    background-color: red;
+    
+}
+
+.not-so-urgent {
+    background-color: orange;
+}
+
+.for-later {
+    background-color: green;
+}

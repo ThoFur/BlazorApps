@@ -9,25 +9,28 @@
 <ul>
     @foreach (var todo in todos)
     {
-        <li>
-            <input type="checkbox" @bind="todo.IsDone" />
+        <li class="@GetUrgencyClass(todo.Urgency)">
+            <input type="checkbox" @bind="todo.IsDone" @oninput="SaveTodos" />
             <input @bind="todo.Title" />
-            <select @bind="todo.Urgency">
-                <option value="VeryUrgent">Very Urgent</option>
-                <option value="NotSoUrgent">Not So Urgent</option>
-                <option value="ForLater">For Later</option>
+            <select @bind="todo.Urgency" @oninput="SaveTodos">
+                <option value="VeryUrgent">Dringend</option>
+                <option value="NotSoUrgent">Minder dringend</option>
+                <option value="ForLater">Minst dringend</option>
             </select>
+            <button @onclick="() => DeleteTodo(todo)">Delete</button>
         </li>
     }
 </ul>
 
-<input placeholder="Something todo" @bind="newTodo" />
+<input placeholder="Something todo" @bind="newTodo" @oninput="SaveTodos" />
 <button @onclick="AddTodo">Add todo</button>
 
 
 @code {
 
     @inject IJSRuntime JSRuntime
+    @inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 
     @code {
         private List<ToDoItem> todos = new();
@@ -35,18 +38,26 @@
 
         protected override async Task OnInitializedAsync()
         {
-            var savedTodos = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "todos");
-            if (!string.IsNullOrEmpty(savedTodos))
+            var savedTodos = await localStorage.GetItemAsync<List<ToDoItem>>("todos");
+            if (savedTodos != null)
             {
-                todos = JsonSerializer.Deserialize<List<ToDoItem>>(savedTodos);
+                todos = savedTodos;
             }
         }
 
         private async Task SaveTodos()
         {
-            var todosJson = JsonSerializer.Serialize(todos);
-            await JSRuntime.InvokeVoidAsync("localStorage.setItem", "todos", todosJson);
+            await localStorage.SetItemAsync("todos", todos);
         }
+
+
+        private void DeleteTodo(ToDoItem todo)
+        {
+            todos.Remove(todo);
+            SaveTodos();
+        }
+
+       
 
         private void AddTodo()
         {
@@ -58,6 +69,17 @@
             }
         }
 
+       
+        private string GetUrgencyClass(Urgency urgency)
+        {
+            return urgency switch
+            {
+                Urgency.VeryUrgent => "urgent",
+                Urgency.NotSoUrgent => "not-so-urgent",
+                Urgency.ForLater => "for-later",
+                _ => string.Empty,
+            };
+        }
 
     }
 
